@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="id">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Login | Cafe Qita</title>
+        <link rel="stylesheet" href="portal.css" />
+    </head>
+    <body class="login-wrap">
+        <main class="card login-card">
+            <h1>Cafe Qita</h1>
+            <p class="muted">Portal Admin &amp; Kasir</p>
+            <form id="form">
+                <div class="form-row">
+                    <label for="user">Username</label
+                    ><input class="input" id="user" autocomplete="username" required />
+                </div>
+                <div class="form-row">
+                    <label for="pass">Password</label
+                    ><input
+                        class="input"
+                        id="pass"
+                        type="password"
+                        autocomplete="current-password"
+                        required
+                    />
+                </div>
+                <p class="error" id="err" hidden>Username atau password salah.</p>
+                <button class="btn" style="width: 100%">Masuk</button>
+            </form>
+        </main>
+        <script src="../data.js"></script>
+        <script>
+            const tuju = (s) => (s.role === "admin" ? "admin.html" : "kasir.html");
+            const sesi = DataCafe.sesi();
+            if (sesi) location.replace(tuju(sesi));
+            document.getElementById("form").addEventListener("submit", async (e) => {
+                e.preventDefault();
+                const akun = await DataCafe.login(
+                    document.getElementById("user").value.trim(),
+                    document.getElementById("pass").value
+                );
+                if (!akun) {
+                    document.getElementById("err").hidden = false;
+                    return;
+                }
+                location.href = tuju(akun);
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="id">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Pembayaran QRIS | Cafe Qita</title>
+        <link rel="stylesheet" href="css/checkout.css" />
+    </head>
+    <body>
+        <main class="checkout-page">
+            <header class="checkout-header">
+                <a class="back-link" href="pembayaran.html">‹</a>
+                <h1>Pembayaran QRIS</h1>
+            </header>
+            <section class="panel center">
+                <p class="muted">Selesaikan pembayaran sebelum waktu habis</p>
+                <div class="timer" id="timer">10:00</div>
+                <div class="qris-image-wrap">
+                    <img
+                        class="qris-image"
+                        src="assets/qris-cafe-qita.jpeg"
+                        alt="Kode QRIS resmi Cafe Qita"
+                    />
+                </div>
+                <p class="muted">Total pembayaran</p>
+                <h2 id="total-payment">Rp 0</h2>
+                <p class="notice" style="margin-top: 14px">
+                    Scan QRIS Cafe Qita di atas melalui aplikasi pembayaran. Masukkan nominal sesuai
+                    total pembayaran yang tertera.
+                </p>
+                <p class="error" id="expired-message" hidden>
+                    Waktu pembayaran habis. Silakan ulangi proses pembayaran.
+                </p>
+            </section>
+            <section class="panel">
+                <h2>Instruksi</h2>
+                <p class="muted">1. Buka aplikasi pembayaran yang mendukung QRIS.</p>
+                <p class="muted">2. Scan kode QRIS resmi Cafe Qita.</p>
+                <p class="muted">
+                    3. Masukkan nominal sesuai total pembayaran yang tertera, lalu pastikan nama
+                    merchant dan nominal sudah benar sebelum membayar.
+                </p>
+            </section>
+            <div class="action-bar">
+                <button class="primary-btn" id="simulate-payment">
+                    Simulasikan Pembayaran Berhasil
+                </button>
+                <p class="muted center" style="margin-top: 8px">
+                    Tombol simulasi hanya untuk pengujian tugas.
+                </p>
+            </div>
+        </main>
+        <script src="qris.js"></script>
+    </body>
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="id">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>QR Code Generator | Cafe Qita</title>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+        <style>
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+
+            body {
+                font-family: Arial, sans-serif;
+                background: #f6f2e7;
+                color: #344f3b;
+                padding: 30px 16px;
+            }
+
+            .container {
+                max-width: 450px;
+                margin: auto;
+                background: white;
+                padding: 25px;
+                border-radius: 18px;
+                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            }
+
+            h1 {
+                font-family: Georgia, serif;
+                color: #315b3e;
+                margin-bottom: 8px;
+            }
+
+            .description {
+                color: #85867e;
+                font-size: 14px;
+                margin-bottom: 25px;
+            }
+
+            label {
+                display: block;
+                margin-bottom: 7px;
+                font-size: 14px;
+                font-weight: bold;
+            }
+
+            input {
+                width: 100%;
+                padding: 12px;
+                border: 1px solid #ddd8cc;
+                border-radius: 9px;
+                margin-bottom: 18px;
+                font-size: 14px;
+            }
+
+            button {
+                width: 100%;
+                padding: 13px;
+                background: #315b3e;
+                color: white;
+                border: none;
+                border-radius: 9px;
+                font-weight: bold;
+                cursor: pointer;
+            }
+
+            button:hover {
+                background: #24482f;
+            }
+
+            .qr-result {
+                display: none;
+                margin-top: 25px;
+                text-align: center;
+                padding: 20px;
+                border: 1px solid #e9e4d8;
+                border-radius: 14px;
+            }
+
+            #qrcode {
+                display: flex;
+                justify-content: center;
+                margin: 20px 0;
+            }
+
+            #qrcode img {
+                margin: auto;
+            }
+
+            .table-name {
+                font-family: Georgia, serif;
+                font-size: 22px;
+                font-weight: bold;
+                margin-bottom: 10px;
+            }
+
+            .qr-url {
+                font-size: 11px;
+                color: #85867e;
+                overflow-wrap: anywhere;
+                margin-bottom: 18px;
+            }
+
+            .download-button {
+                background: #c9b594;
+                color: #352d23;
+            }
+
+            .download-button:hover {
+                background: #bca783;
+            }
+
+            .error {
+                color: #b33b32;
+                font-size: 13px;
+                margin-bottom: 12px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <main class="container">
+            <h1>Cafe Qita</h1>
+            <p class="description">QR Code Generator untuk setiap meja.</p>
+
+            <label>Website URL</label>
+            <input
+                type="url"
+                id="base-url"
+                placeholder="http://192.168.1.10/cafe_qita/index.html"
+            />
+
+            <label>Nomor Meja</label>
+            <input type="number" id="table-id" placeholder="Contoh: 07" min="1" />
+
+            <p class="error" id="error-message"></p>
+
+            <button onclick="generateQR()">Generate QR Code</button>
+
+            <div class="qr-result" id="qr-result">
+                <div class="table-name" id="table-name"></div>
+
+                <div id="qrcode"></div>
+
+                <p class="qr-url" id="qr-url"></p>
+
+                <button class="download-button" onclick="downloadQR()">Download QR Code</button>
+            </div>
+        </main>
+
+        <script>
+            let qrCode;
+
+            function generateQR() {
+                const baseUrl = document.getElementById("base-url").value.trim();
+                const tableId = document.getElementById("table-id").value.trim();
+
+                const error = document.getElementById("error-message");
+                const result = document.getElementById("qr-result");
+
+                error.textContent = "";
+
+                if (!baseUrl || !tableId || Number(tableId) < 1) {
+                    error.textContent = "Website URL dan nomor meja harus diisi.";
+                    return;
+                }
+
+                let url;
+
+                try {
+                    url = new URL(baseUrl);
+
+                    if (!["http:", "https:"].includes(url.protocol)) {
+                        throw new Error("URL tidak valid");
+                    }
+                } catch {
+                    error.textContent = "Masukkan URL website yang valid.";
+                    return;
+                }
+
+                url.searchParams.set("id_meja", tableId.padStart(2, "0"));
+
+                document.getElementById("qrcode").innerHTML = "";
+
+                document.getElementById("table-name").textContent =
+                    "Meja " + tableId.padStart(2, "0");
+
+                document.getElementById("qr-url").textContent = url.href;
+
+                qrCode = new QRCode(document.getElementById("qrcode"), {
+                    text: url.href,
+                    width: 200,
+                    height: 200,
+                    colorDark: "#315b3e",
+                    colorLight: "#ffffff",
+                    correctLevel: QRCode.CorrectLevel.H,
+                });
+
+                result.style.display = "block";
+            }
+
+            function downloadQR() {
+                const qrImage = document.querySelector("#qrcode img");
+
+                if (!qrImage) return;
+
+                const link = document.createElement("a");
+
+                link.href = qrImage.src;
+                link.download = "QR-Cafe-Qita.png";
+                link.click();
+            }
+        </script>
+    </body>
+</html>

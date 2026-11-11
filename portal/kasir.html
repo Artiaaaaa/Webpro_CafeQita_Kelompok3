@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="id">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Kasir | Cafe Qita</title>
+        <link rel="stylesheet" href="portal.css" />
+    </head>
+    <body>
+        <header class="topbar">
+            <h1>Cafe Qita · Kasir</h1>
+            <div class="user">
+                <span id="user-nama"></span><button class="btn" id="logout">Keluar</button>
+            </div>
+        </header>
+
+        <div class="pos">
+            <aside class="filter">
+                <h2>Pesanan</h2>
+                <nav id="filter"></nav>
+            </aside>
+            <main class="orders-area">
+                <div class="area-head">
+                    <h2 id="judul-daftar">Pesanan Diproses</h2>
+                    <button class="btn" id="tambah">+ Pesanan Baru</button>
+                </div>
+                <div class="order-grid" id="daftar"></div>
+            </main>
+        </div>
+
+        <div class="overlay" id="modal">
+            <div class="dialog">
+                <h2 id="judul-modal">Pesanan Baru</h2>
+                <div class="form-2">
+                    <div class="form-row">
+                        <label for="o-nama">Nama pelanggan</label
+                        ><input class="input" id="o-nama" />
+                    </div>
+                    <div class="form-row">
+                        <label for="o-meja">Nomor meja</label
+                        ><input class="input" id="o-meja" placeholder="Opsional" />
+                    </div>
+                </div>
+                <div class="form-row">
+                    <label for="o-metode">Metode bayar</label
+                    ><select class="input" id="o-metode">
+                        <option>Tunai</option>
+                        <option>QRIS</option>
+                    </select>
+                </div>
+                <div id="o-menu"></div>
+                <div class="pick-total" style="font-weight: 400">
+                    <span>Subtotal</span><span id="o-sub">Rp 0</span>
+                </div>
+                <div class="pick-total" style="font-weight: 400">
+                    <span>Pajak (10%)</span><span id="o-pajak">Rp 0</span>
+                </div>
+                <div class="pick-total"><span>Total</span><span id="o-total">Rp 0</span></div>
+                <p class="error" id="o-error" hidden>Pilih minimal satu menu.</p>
+                <div class="dialog-actions">
+                    <button class="btn soft" id="batal">Batal</button
+                    ><button class="btn" id="simpan">Simpan</button>
+                </div>
+            </div>
+        </div>
+
+        <script src="../data.js"></script>
+        <script src="kasir.js"></script>
+    </body>
+</html>

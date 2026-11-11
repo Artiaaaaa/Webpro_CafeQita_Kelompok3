@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="id">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Pembayaran | Cafe Qita</title>
+        <link rel="stylesheet" href="css/checkout.css" />
+    </head>
+    <body>
+        <main class="checkout-page">
+            <header class="checkout-header">
+                <a class="back-link" id="back-link" href="keranjang.html">‹</a>
+                <h1>Pembayaran</h1>
+                <span class="table-pill" id="table-number">Tanpa meja</span>
+            </header>
+            <section class="panel">
+                <h2>Data Pemesan</h2>
+                <label class="field-label" for="customer-name">Nama pelanggan</label
+                ><input
+                    class="field-input"
+                    id="customer-name"
+                    type="text"
+                    maxlength="60"
+                    placeholder="Masukkan nama Anda"
+                    autocomplete="name"
+                />
+                <p class="error" id="name-error" hidden>Nama pelanggan wajib diisi.</p>
+            </section>
+            <section class="panel">
+                <h2>Complete Payment</h2>
+                <label class="payment-option" for="payment-qris">
+                    <span><strong>QRIS</strong><small>Scan untuk membayar</small></span>
+                    <input
+                        type="radio"
+                        id="payment-qris"
+                        name="payment-method"
+                        value="QRIS"
+                        checked
+                    />
+                </label>
+            </section>
+            <section class="panel">
+                <h2>Ringkasan Pembayaran</h2>
+                <div id="order-summary"></div>
+                <div class="checkout-divider"></div>
+                <div class="checkout-row checkout-total">
+                    <span>Total pembayaran</span><strong id="grand-total">Rp 0</strong>
+                </div>
+            </section>
+            <div class="notice">
+                Periksa kembali nama dan total pesanan sebelum melanjutkan pembayaran.
+            </div>
+            <div class="action-bar">
+                <button class="primary-btn" id="continue-payment">Bayar</button>
+            </div>
+
+            <div class="confirm-overlay" id="confirm-overlay" hidden>
+                <section
+                    class="confirm-dialog"
+                    role="dialog"
+                    aria-modal="true"
+                    aria-labelledby="confirm-title"
+                >
+                    <h2 id="confirm-title">Cek lagi sebelum bayar</h2>
+                    <p id="confirm-message">Pastikan nama dan total pesanan sudah benar.</p>
+                    <div class="confirm-actions">
+                        <button type="button" class="confirm-check" id="review-order">
+                            Cek Lagi
+                        </button>
+                        <button type="button" class="confirm-pay" id="confirm-pay">
+                            Bayar Sekarang
+                        </button>
+                    </div>
+                </section>
+            </div>
+        </main>
+        <script src="data.js"></script>
+        <script src="pembayaran.js"></script>
+    </body>
+</html>

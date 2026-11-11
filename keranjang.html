@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="id">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Keranjang | Cafe Qita</title>
+        <link rel="stylesheet" href="css/keranjang.css" />
+    </head>
+    <body>
+        <main class="cart-page">
+            <header class="cart-header">
+                <a href="menu.html" class="back-link">‹</a>
+                <h1>Keranjang</h1>
+                <span class="table-pill" id="table-number">Tanpa meja</span>
+            </header>
+
+            <section class="cart-items" id="cart-items"></section>
+
+            <section class="order-summary">
+                <div class="summary-row">
+                    <span>Meja</span>
+                    <strong id="summary-table-number">Tanpa meja</strong>
+                </div>
+
+                <div class="summary-row">
+                    <span>Jumlah Item</span>
+                    <strong id="total-items">0</strong>
+                </div>
+
+                <div class="summary-divider"></div>
+
+                <div class="summary-row total-row">
+                    <strong>Subtotal (belum termasuk pajak 10%)</strong>
+                    <strong id="total-price">Rp 0</strong>
+                </div>
+            </section>
+
+            <p class="cart-note">
+                Setelah dikonfirmasi, status pesanan menjadi "Menunggu Pembayaran".
+            </p>
+
+            <div class="bottom-action">
+                <button class="confirm-button" id="confirm-order">Konfirmasi Pesanan</button>
+            </div>
+        </main>
+
+        <div class="popup-overlay" id="confirmation-popup">
+            <div class="confirmation-popup">
+                <h2>Pesanan sudah sesuai?</h2>
+
+                <p>Pastikan pesanan Anda sudah benar sebelum melanjutkan ke pembayaran.</p>
+
+                <div class="popup-buttons">
+                    <button class="cancel-button" id="cancel-order">Batal</button>
+
+                    <button class="payment-button" id="continue-payment">
+                        Lanjut<br />Pembayaran
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <script src="data.js"></script>
+        <script src="keranjang.js"></script>
+    </body>
+</html>

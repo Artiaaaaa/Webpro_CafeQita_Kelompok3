@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="id">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Struk Pesanan | Cafe Qita</title>
+        <link rel="stylesheet" href="css/checkout.css" />
+    </head>
+    <body>
+        <main class="checkout-page">
+            <header class="checkout-header">
+                <a class="back-link" href="status-pesanan.html">‹</a>
+                <h1>Struk Pesanan</h1>
+            </header>
+            <section class="panel center">
+                <div class="success-mark">✓</div>
+                <h2>Cafe Qita</h2>
+                <p class="muted">Bukti transaksi pesanan</p>
+            </section>
+            <section class="panel">
+                <div class="receipt-line">
+                    <span>Nomor Pesanan</span><strong id="receipt-id"></strong>
+                </div>
+                <div class="receipt-line">
+                    <span>Tanggal</span><strong id="receipt-date"></strong>
+                </div>
+                <div class="receipt-line"><span>Nama</span><strong id="receipt-name"></strong></div>
+                <div class="receipt-line">
+                    <span>Meja</span><strong id="receipt-table"></strong>
+                </div>
+                <div class="checkout-divider"></div>
+                <div id="receipt-items"></div>
+                <div class="checkout-divider"></div>
+                <div class="receipt-line">
+                    <span>Subtotal</span><strong id="receipt-subtotal"></strong>
+                </div>
+                <div class="receipt-line"><span>Pajak</span><strong id="receipt-tax"></strong></div>
+                <div class="receipt-line receipt-total">
+                    <span>Total</span><strong id="receipt-total"></strong>
+                </div>
+                <p class="status-badge" id="receipt-payment" style="margin-top: 14px">QRIS</p>
+            </section>
+            <div class="action-bar no-print">
+                <button class="primary-btn" id="print-receipt">Cetak / Unduh Struk</button
+                ><a class="secondary-btn" href="menu.html" style="margin-top: 9px"
+                    >Kembali ke Menu</a
+                >
+            </div>
+        </main>
+        <script src="struk.js"></script>
+    </body>
+</html>

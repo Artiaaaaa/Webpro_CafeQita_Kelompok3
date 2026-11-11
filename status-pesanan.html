@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="id">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Status Pesanan | Cafe Qita</title>
+        <link rel="stylesheet" href="css/checkout.css" />
+    </head>
+    <body>
+        <main class="checkout-page">
+            <header class="checkout-header">
+                <a class="back-link" href="menu.html">‹</a>
+                <h1>Status Pesanan</h1>
+                <span class="table-pill" id="table-number">Tanpa meja</span>
+            </header>
+            <section class="panel center">
+                <div class="success-mark">✓</div>
+                <h2 id="status-title">Pesanan diterima</h2>
+                <span class="status-badge" id="status-badge">Diproses</span>
+                <p class="muted" id="order-number" style="margin-top: 10px"></p>
+            </section>
+            <section class="panel">
+                <h2>Perkembangan Pesanan</h2>
+                <div class="status-steps" id="status-steps"></div>
+            </section>
+            <section class="panel">
+                <h2>Detail Pesanan</h2>
+                <div id="items-detail"></div>
+                <div class="checkout-divider"></div>
+                <div class="checkout-row checkout-total">
+                    <span>Total</span><strong id="order-total"></strong>
+                </div>
+            </section>
+            <section class="panel">
+                <h2>Informasi</h2>
+                <p class="muted" id="order-info"></p>
+            </section>
+            <div class="action-bar">
+                <a class="primary-btn" id="receipt-link" href="struk.html">Lihat Struk Pesanan</a>
+            </div>
+        </main>
+        <script src="status-pesanan.js"></script>
+    </body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="id">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Cafe Qita | Good coffee, better people.</title>
+        <link rel="stylesheet" href="css/profile.css" />
+    </head>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+
+        const idMeja = params.get("id_meja");
+        const idPelanggan = params.get("id_pelanggan");
+
+        if (idMeja) {
+            sessionStorage.setItem("idMeja", idMeja);
+        }
+
+        if (idPelanggan) {
+            sessionStorage.setItem("idPelanggan", idPelanggan);
+        }
+
+        const menuButton = document.querySelector(".bottom-cta .btn");
+
+        if (menuButton) {
+            const meja = sessionStorage.getItem("idMeja");
+            const pelanggan = sessionStorage.getItem("idPelanggan");
+
+            if (meja) {
+                menuButton.href =
+                    "menu.html?id_meja=" +
+                    encodeURIComponent(meja) +
+                    "&id_pelanggan=" +
+                    encodeURIComponent(pelanggan || "");
+            }
+        }
+    </script>
+
+    <body>
+        <main class="page">
+            <header class="navbar">
+                <a class="brand" href="#">
+                    <img src="assets/logocafe.png" alt="Logo Cafe Qita" />
+                    <span>Cafe Qita</span>
+                </a>
+
+                <div class="nav-right">
+                    <a class="nav-link" href="#our-story">Our Story</a>
+                    <a class="nav-link" href="#information">Find Us</a>
+                </div>
+            </header>
+
+            <section class="hero">
+                <div class="hero-copy">
+                    <p class="eyebrow">Welcome to Cafe Qita</p>
+                    <h1>Cafe Qita</h1>
+                    <p class="tagline">Good coffee, better people.</p>
+                </div>
+                <div class="hero-image">
+                    <img
+                        src="assets/fotoindex.jpeg"
+                        alt="Interior cafe yang nyaman"
+                        style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px"
+                    />
+                </div>
+            </section>
+
+            <section class="info-grid" id="information">
+                <div class="info-card">
+                    <span class="info-icon">📍</span>
+                    <div>
+                        <span class="info-label">Alamat</span>
+                        <p class="info-value">Jl. Ketintang Baru Selatan I No. 1, Surabaya</p>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <span class="info-icon">🕒</span>
+                    <div>
+                        <span class="info-label">Opening Hours</span>
+                        <p class="info-value">09.00 - 01.00</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="story-section" id="our-story">
+                <div class="section-top">
+                    <h2>Our Story</h2>
+                    <p>A little story behind every cup.</p>
+                </div>
+                <article class="story-card">
+                    <div
+                        class="story-image"
+                        role="img"
+                        aria-label="Suasana dan kopi di Cafe Qita"
+                    ></div>
+                    <div class="story-copy">
+                        <h3>More Than Just Coffee</h3>
+                        <p>
+                            Cafe Qita hadir sebagai tempat untuk menikmati secangkir kopi, berbagi
+                            cerita, dan menciptakan momen berharga bersama orang-orang terdekat.
+                            Dengan suasana yang nyaman dan pilihan menu berkualitas, kami ingin
+                            menjadikan setiap kunjungan terasa lebih istimewa.
+                        </p>
+                        <span class="story-note">Good coffee, better people.</span>
+                    </div>
+                </article>
+            </section>
+
+            <div class="bottom-cta">
+                <a class="btn" href="menu.html">Lihat Menu &amp; Pesan</a>
+            </div>
+
+            <footer>© 2026 Cafe Qita. Made for good moments.</footer>
+        </main>
+    </body>
+</html>

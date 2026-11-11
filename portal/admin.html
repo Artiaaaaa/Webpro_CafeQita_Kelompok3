@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="id">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Admin | Cafe Qita</title>
+        <link rel="stylesheet" href="portal.css" />
+    </head>
+    <body>
+        <div class="shell">
+            <aside class="sidebar">
+                <div class="brand">
+                    <img src="../assets/logocafe.png" alt="" onerror="this.hidden = true" />
+                    <strong>Cafe Qita</strong>
+                </div>
+                <nav class="nav">
+                    <button class="active" data-view="dashboard">Dashboard</button>
+                    <button data-view="laporan">Laporan</button>
+                    <button id="logout">Logout</button>
+                </nav>
+                <div class="side-user"><strong id="user-nama"></strong><small>Admin</small></div>
+            </aside>
+
+            <main class="content">
+                <div id="view-dashboard" class="content" style="padding: 0">
+                    <div class="greeting"><h1 id="hello">Halo!</h1></div>
+
+                    <section class="stats">
+                        <div class="stat">
+                            <div><span>Total Menu</span><strong id="st-menu">0</strong></div>
+                        </div>
+                        <div class="stat">
+                            <div><span>Total Transaksi</span><strong id="st-trx">0</strong></div>
+                        </div>
+                        <div class="stat">
+                            <div>
+                                <span>Total Pendapatan</span><strong id="st-uang">Rp 0</strong>
+                            </div>
+                        </div>
+                    </section>
+
+                    <div class="grid-2">
+                        <section class="card">
+                            <div class="card-head">
+                                <h2>Daftar Menu</h2>
+                                <button class="btn" id="tambah-menu">+ Tambah Menu</button>
+                            </div>
+                            <div class="table-wrap">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Nama Menu</th>
+                                            <th>Kategori</th>
+                                            <th>Harga</th>
+                                            <th>Status</th>
+                                            <th>Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="menu-body"></tbody>
+                                </table>
+                            </div>
+                            <div class="card-foot">
+                                <button class="btn soft" data-view="laporan">
+                                    Lihat Laporan →
+                                </button>
+                            </div>
+                        </section>
+
+                        <section class="card">
+                            <div class="card-head"><h2>Transaksi Terbaru</h2></div>
+                            <div class="table-wrap">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>No.</th>
+                                            <th>Tanggal</th>
+                                            <th>Total</th>
+                                            <th>Bayar</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="trx-body"></tbody>
+                                </table>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+
+                <div id="view-laporan" class="content" hidden style="padding: 0">
+                    <div class="greeting"><h1>Laporan Pesanan &amp; Rekap Pendapatan</h1></div>
+                    <section class="stats">
+                        <div class="stat">
+                            <div><span>Total Pesanan</span><strong id="lp-total">0</strong></div>
+                        </div>
+                        <div class="stat">
+                            <div>
+                                <span>Total Pendapatan</span><strong id="lp-uang">Rp 0</strong>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="report-grid">
+                        <section class="card">
+                            <div class="card-head"><h2>Jumlah Terjual per Menu</h2></div>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Menu</th>
+                                        <th>Terjual</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="lp-menu"></tbody>
+                            </table>
+                        </section>
+                        <section class="card">
+                            <div class="card-head"><h2>Pendapatan Lunas per Metode Bayar</h2></div>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Metode</th>
+                                        <th>Transaksi</th>
+                                        <th>Pendapatan</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="lp-metode"></tbody>
+                            </table>
+                        </section>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <div class="overlay" id="modal-menu">
+            <div class="dialog">
+                <h2 id="judul-menu">Tambah Menu</h2>
+                <div class="form-row">
+                    <label for="m-nama">Nama Menu</label><input class="input" id="m-nama" />
+                </div>
+                <div class="form-2">
+                    <div class="form-row">
+                        <label for="m-kategori">Kategori</label
+                        ><select class="input" id="m-kategori"></select>
+                    </div>
+                    <div class="form-row">
+                        <label for="m-harga">Harga (Rp)</label
+                        ><input class="input" id="m-harga" type="number" min="1" />
+                    </div>
+                </div>
+                <div class="form-row">
+                    <label for="m-status">Status</label
+                    ><select class="input" id="m-status">
+                        <option>Tersedia</option>
+                        <option>Habis</option>
+                    </select>
+                </div>
+                <p class="error" id="m-error" hidden>Isi nama menu dan harga yang benar.</p>
+                <div class="dialog-actions">
+                    <button class="btn soft" id="batal-menu">Batal</button
+                    ><button class="btn" id="simpan-menu">Simpan</button>
+                </div>
+            </div>
+        </div>
+
+        <script src="../data.js"></script>
+        <script src="admin.js"></script>
+    </body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="id">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Menu | Cafe Qita</title>
+        <link rel="stylesheet" href="css/menu.css" />
+    </head>
+    <body>
+        <main class="menu-page">
+            <header class="menu-header">
+                <a href="index.html" class="back-link">‹</a>
+                <h1>Menu</h1>
+                <span class="table-pill" id="table-number">Tanpa meja</span>
+            </header>
+
+            <nav class="category-list">
+                <button class="category active" data-category="Semua">Semua</button>
+                <button class="category" data-category="Kopi">Kopi</button>
+                <button class="category" data-category="Non-Kopi">Non-Kopi</button>
+                <button class="category" data-category="Makanan">Makanan</button>
+            </nav>
+
+            <section class="product-list" id="product-list"></section>
+
+            <section class="cart-bar">
+                <div class="cart-summary">
+                    <span id="cart-count">0 item</span>
+                    <strong id="cart-total">Rp 0</strong>
+                </div>
+                <button class="cart-button" id="view-cart">Lihat Keranjang</button>
+            </section>
+        </main>
+
+        <script src="data.js"></script>
+        <script src="menu.js"></script>
+    </body>
+</html>
